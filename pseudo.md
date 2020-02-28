@@ -1,5 +1,6 @@
 ### Criteria
 **1.** Button to generate password
+
 a. **Clicking button** activates showing **user choices** for password criteria.  Choices include:
 
  a. i. Password length from 8-128
