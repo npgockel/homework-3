@@ -8,15 +8,15 @@ a. **Clicking button** activates showing **user choices** for password criteria.
 
  a. ii. 1. Uppercase "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
 
-and/or
+*and/or*
 
  a. ii. 2. Lowercase "abcdefghijklmnopqrstuvwxyz";
 
-and/or
+*and/or*
 
  a. ii. 3. Numeral "1234567890";
 
-and/or 
+*and/or*
 
  a. ii. 4. Special Characters "!@#$%^&*()_+";
 
