@@ -1,98 +1,68 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// HTML idss
-
-// Global vars
-var upperChar;
+generateBtn.addEventListener("click", generatePassword);
 
 // Function to generate password
 function generatePassword() {
-  // Password length
-  var passLength = document.getElementById("length").value;
+  // Declare Password var
+  var passwordGen = "";
 
-  // Character Choice Classes (CCC)
-  // var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
-  // var lowerChar = "abcdefghijklmnopqrstuvwxyz";
-  // var numerChar = "1234567890";
-  // var speciChar = "!@#$%^&*()_+";
-  var ccc = [
+  //Prompt for password length
+  var passLength;
+  while (passLength < 8 || passLength > 128 || isNaN(passLength)) {
+    passLength = prompt("How long would you like your password?  Choose 8-128");
+    console.log(passLength);
+  }
+
+  // Character Choices Array
+  var charChoices = [
     "ABCDEFGHIJKLMNOPQRSTUVWZYZ",
     "abcdefghijklmnopqrstuvwxyz",
     "1234567890",
     "!@#$%^&*()_+"
   ];
+  // Chosen Character Concat container
+  var charChosen = [];
 
-  // Boolean array for CCC choices.
-  // [upperChar, lowerChar, numerChar, speciChar]
-  var boolCcc = [false, false, false, false];
+  // Confirm Dialog for Character Choices; adding chosen password elements to charChosen[]. Needs to DRY
+  var charUpper = confirm("Include Uppercase Letters in Password?");
+  if (charUpper === true) {
+    charChosen.push(charChoices[0]);
+    console.log(charChosen);
+  }
+  var charLower = confirm("Include Lowercase Letters in Password?");
+  if (charLower === true) {
+    charChosen.push(charChoices[1]);
+    console.log(charChosen);
+  }
+  var charNumer = confirm("Include Numbers in Password?");
+  if (charNumer === true) {
+    charChosen.push(charChoices[2]);
+    console.log(charChosen);
+  }
+  var charSpeci = confirm("Include Special Characters in Password?");
+  if (charSpeci === true) {
+    charChosen.push(charChoices[3]);
+    console.log(charChosen);
+  }
 
-// // Containers for CCC (Boolean)
-// var addUpper = false;
-// var addLower = false;
-// var addNumer = false;
-// var addSpeci = false;
+  // Concatenating or 'Joining' charChosen[] without spaces
+  var conCharChosen = charChosen.join("");
+  console.log(conCharChosen);
 
+  // Randomly selecting characters from joined charChosen[]
+  for (var i = 0; i <= passLength; i++) {
+    passwordGen =
+      passwordGen +
+      conCharChosen.charAt(
+        Math.floor(Math.random() * Math.floor(conCharChosen.length - 1))
+      );
+  }
 
+  // Setting var to display generated password
+  var passwordText = document.querySelector("#password");
+// Setting value of #password to generated password
+  passwordText.value = passwordGen;
 
-  // Event listeners for CCC
-  document.getElementById("upper-char").onclick = function() {
-    if (this.checked) {
-      boolCcc[0] = true;
-      console.log(boolCcc[0]);
-    } else {
-      boolCcc[0] = false;
-      console.log(boolCcc[0]);
-    }
-  };
-  document.getElementById("lower-char").onclick = function() {
-    if (this.checked) {
-      boolCcc[1] = true;
-      console.log(boolCcc[1]);
-    } else {
-      boolCcc[1] = false;
-      console.log(boolCcc[1]);
-    }
-  };
-  document.getElementById("numer-char").onclick = function() {
-    if (this.checked) {
-      boolCcc[2] = true;
-      console.log(boolCcc[2]);
-    } else {
-      boolCcc[2] = false;
-      console.log(boolCcc[2]);
-    }
-  };
-  document.getElementById("speci-char").onclick = function() {
-    if (this.checked) {
-      boolCcc[3] = true;
-      console.log(boolCcc[3]);
-    } else {
-      boolCcc[3] = false;
-      console.log(boolCcc[3]);
-    }
-  };
-
-
-
-  // The generated password container
-  var password = "";
-
-  // Random Character Selector
-
-  // values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)))
-
-  document.getElementById("password").value = password;
 }
