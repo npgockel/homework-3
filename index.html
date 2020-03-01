@@ -7,6 +7,7 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="wrapper">
       <header>
@@ -14,18 +15,68 @@
       </header>
       <div class="card">
         <div class="card-header">
-          <h2>Generate a Password</h2>
+          <button id="start-gen" class="btn" onclick="generatePassword()">
+            Click here to Start Password Generation
+          </button>
         </div>
+
         <div class="card-body">
+          <div id="pass-crit">
+            <div>
+              <label for="length"
+                >Choose a password length from 8 to 128 characters:</label
+              >
+              <input
+                type="number"
+                id="length"
+                name="length"
+                min="8"
+                max="128"
+                value="32"
+              />
+            </div>
+            <br />
+            <label for="char-crit"
+              >Select the elements you would like to include in your
+              password:</label
+            >
+            <form id="char-crit">
+              <input
+                type="checkbox"
+                id="upper-char"
+                name="upper-char"
+                value="Uppercases"
+              /><label for="upper-char">Uppercase</label><br />
+              <input
+                type="checkbox"
+                id="lower-char"
+                name="lower-char"
+                value="Lowercase"
+              /><label for="lower-char">Lowercase</label><br />
+              <input
+                type="checkbox"
+                id="numer-char"
+                name="numer-char"
+                value="Numbers"
+              /><label for="numer-char">Numbers</label><br />
+              <input
+                type="checkbox"
+                id="speci-char"
+                name="speci-char"
+                value="Special Characters"
+              /><label for="speci-char">Special Characters</label>
+            </form>
+            <br />
+            <button id="generate" class="btn">Generate Password</button>
+          </div>
+        </div>
+        <div class="card-footer">
           <textarea
             readonly
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>
     </div>
