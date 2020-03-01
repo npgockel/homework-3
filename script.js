@@ -1,19 +1,22 @@
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
+  passwordText.value = password;
 
-// }
+}
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // HTML idss
+
+// Global vars
+var upperChar;
 
 // Function to generate password
 function generatePassword() {
@@ -21,63 +24,75 @@ function generatePassword() {
   var passLength = document.getElementById("length").value;
 
   // Character Choice Classes (CCC)
-  var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
-  var lowerChar = "abcdefghijklmnopqrstuvwxyz";
-  var numerChar = "1234567890";
-  var speciChar = "!@#$%^&*()_+";
+  // var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
+  // var lowerChar = "abcdefghijklmnopqrstuvwxyz";
+  // var numerChar = "1234567890";
+  // var speciChar = "!@#$%^&*()_+";
+  var ccc = [
+    "ABCDEFGHIJKLMNOPQRSTUVWZYZ",
+    "abcdefghijklmnopqrstuvwxyz",
+    "1234567890",
+    "!@#$%^&*()_+"
+  ];
 
-  // Containers for CCC (Boolean)
-  var addUpper = false;
-  var addLower = false;
-  var addNumer = false;
-  var addSpeci = false;
+  // Boolean array for CCC choices.
+  // [upperChar, lowerChar, numerChar, speciChar]
+  var boolCcc = [false, false, false, false];
+
+// // Containers for CCC (Boolean)
+// var addUpper = false;
+// var addLower = false;
+// var addNumer = false;
+// var addSpeci = false;
+
+
 
   // Event listeners for CCC
-
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var checkUpper = document.querySelector("input[name=upper-char]");
-    checkUpper.addEventListener("change", function(event) {
-      if (checkUpper.checked) {
-        addUpper = true;
-        console.log(addUpper)
-      } else {
-        // do something else otherwise
-      }
-    });
-  });
-
-  var checkLower = document.querySelector("input[name=lower-char]");
-
-  checkLower.addEventListener("change", function() {
+  document.getElementById("upper-char").onclick = function() {
     if (this.checked) {
-      // Checkbox is checked..
+      boolCcc[0] = true;
+      console.log(boolCcc[0]);
     } else {
-      // Checkbox is not checked..
+      boolCcc[0] = false;
+      console.log(boolCcc[0]);
     }
-  });
-
-  var checkNumer = document.querySelector("input[name=numer-char]");
-
-  checkNumer.addEventListener("change", function() {
+  };
+  document.getElementById("lower-char").onclick = function() {
     if (this.checked) {
-      // Checkbox is checked..
+      boolCcc[1] = true;
+      console.log(boolCcc[1]);
     } else {
-      // Checkbox is not checked..
+      boolCcc[1] = false;
+      console.log(boolCcc[1]);
     }
-  });
-
-  var checkSpeci = document.querySelector("input[name=speci-char]");
-
-  checkSpeci.addEventListener("change", function() {
+  };
+  document.getElementById("numer-char").onclick = function() {
     if (this.checked) {
-      // Checkbox is checked..
+      boolCcc[2] = true;
+      console.log(boolCcc[2]);
     } else {
-      // Checkbox is not checked..
+      boolCcc[2] = false;
+      console.log(boolCcc[2]);
     }
-  });
+  };
+  document.getElementById("speci-char").onclick = function() {
+    if (this.checked) {
+      boolCcc[3] = true;
+      console.log(boolCcc[3]);
+    } else {
+      boolCcc[3] = false;
+      console.log(boolCcc[3]);
+    }
+  };
+
+
 
   // The generated password container
   var password = "";
+
+  // Random Character Selector
+
+  // values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)))
 
   document.getElementById("password").value = password;
 }
